@@ -18,7 +18,7 @@ from mlxtend.frequent_patterns import association_rules
 # Functions
 
 ### Part 1 Apriori Algorithm
-##time on my own 6 hrs
+##time on my own 8 hrs
 def TESTApriori(dataset_transaction, k, min_sup):
 	Item_set = []
 	Freq_set = []
@@ -145,7 +145,16 @@ fivepercent =apriori(df, min_support=0.05, use_colnames=True)
 
 onepercent = apriori(df, min_support=0.05, use_colnames=True)
 
-frequent_itemsets = apriori(df, min_support=5/len(transaction_group), use_colnames=True)
+print("10% minimal support")
+print(tenpercent)
+
+print("5% minimal support")
+print(fivepercent)
+
+print("1% minimal support")
+print(onepercent)
+
+frequent_itemsets = apriori(df, min_support=5/len(transaction_group), use_colnames=True) #should be the number of items that were in the dataset 5 or more times
 
 frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(x))
 
@@ -158,11 +167,6 @@ max_rule = rules[ (rules['antecedents_len'] >= 2) & (rules['consequents_len'] <=
 max_rule = max_rule[['antecedents','consequents', 'confidence', 'lift', 'support']]
 print(max_rule)
 quit()
-
-
-
-quit()
-
 
 ##################################
 # Coding Resources
